@@ -259,69 +259,71 @@ main {
     }
 
 /* ===== Gallery Page ===== */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+.gallery-container {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.image-carousel {
+    display: flex;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
     gap: 1.5rem;
+    padding: 1rem 0;
 }
 
-.gallery-item {
-    background: var(--white);
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    transition: box-shadow 0.2s;
+    .image-carousel::-webkit-scrollbar {
+        display: none;
+        /* Chrome, Safari, and Opera */
+    }
+
+    .image-carousel img {
+        max-width: 80%;
+        height: auto;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        flex: 0 0 auto;
+        object-fit: cover;
+        max-height: 70vh;
+    }
+
+.carousel-button {
+    background-color: rgba(26, 58, 92, 0.8);
+    color: var(--white);
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-    .gallery-item:hover {
-        box-shadow: var(--shadow-hover);
+    .carousel-button:hover {
+        background-color: var(--accent);
     }
 
-    .gallery-item .img-placeholder {
-        height: 220px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 3.5rem;
-        position: relative;
-    }
+.carousel-button.prev {
+    left: -20px;
+}
 
-        .gallery-item .img-placeholder.night {
-            background: linear-gradient(135deg, #1a2a3a, #2c3e50);
-            color: #f0e68c;
-        }
-
-        .gallery-item .img-placeholder.water {
-            background: linear-gradient(135deg, #2e7d9c, #5ba4c0);
-            color: #fff;
-        }
-
-        .gallery-item .img-placeholder.tackle {
-            background: linear-gradient(135deg, #5d4037, #8d6e63);
-            color: #ffe0b2;
-        }
-
-        .gallery-item .img-placeholder.bait {
-            background: linear-gradient(135deg, #3e5c3a, #6b8f5e);
-            color: #f5f0e0;
-        }
-
-        .gallery-item .img-placeholder.shop {
-            background: linear-gradient(135deg, #1a3a5c, #3a6080);
-            color: #fff;
-        }
-
-        .gallery-item .img-placeholder.coast {
-            background: linear-gradient(135deg, #4a6fa5, #87ceeb);
-            color: #fff;
-        }
-
-    .gallery-item .caption {
-        padding: 1rem;
-        text-align: center;
-        font-weight: 500;
-        color: var(--navy);
-    }
+.carousel-button.next {
+    right: -20px;
+}
 
 /* ===== Contact Page ===== */
 .contact-grid {

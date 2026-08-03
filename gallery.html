@@ -39,50 +39,15 @@
         <h1>Gallery</h1>
         <p style="margin-bottom: 2rem;">Take a look around The Bait Shack and see what we offer.</p>
 
-        <div class="gallery-grid">
-
-            <div class="gallery-item">
-                <div class="img-placeholder shop">
-                    🏪
-                </div>
-                <div class="caption">The Bait Shack — 832 Wachusett St</div>
+        <div class="gallery-container">
+            <button class="carousel-button prev" aria-label="Previous image">&#10094;</button>
+            <div class="image-carousel">
+                <img src="images/baitshack1.webp" alt="The Bait Shack storefront">
+                <img src="images/baitshack2.webp" alt="Inside The Bait Shack">
+                <img src="images/baitshack3.webp" alt="Fishing tackle and gear">
+                <img src="images/baitshack4.webp" alt="Live bait selection">
             </div>
-
-            <div class="gallery-item">
-                <div class="img-placeholder bait">
-                    🪱
-                </div>
-                <div class="caption">Live Bait — Fresh &amp; Ready</div>
-            </div>
-
-            <div class="gallery-item">
-                <div class="img-placeholder tackle">
-                    🎣
-                </div>
-                <div class="caption">Rods, Reels &amp; Tackle Wall</div>
-            </div>
-
-            <div class="gallery-item">
-                <div class="img-placeholder night">
-                    🌙
-                </div>
-                <div class="caption">Open Late — 24/7 Access</div>
-            </div>
-
-            <div class="gallery-item">
-                <div class="img-placeholder water">
-                    🐟
-                </div>
-                <div class="caption">Gear for Freshwater &amp; Saltwater</div>
-            </div>
-
-            <div class="gallery-item">
-                <div class="img-placeholder coast">
-                    🌊
-                </div>
-                <div class="caption">Serving Central MA Anglers</div>
-            </div>
-
+            <button class="carousel-button next" aria-label="Next image">&#10095;</button>
         </div>
 
     </main>
@@ -91,6 +56,38 @@
         <p>&copy; 2026 The Bait Shack — 832 Wachusett St, Leominster, MA 01453</p>
         <p>Open 24 hours a day, 7 days a week | Cash Only</p>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const carousel = document.querySelector('.image-carousel');
+            const prevButton = document.querySelector('.carousel-button.prev');
+            const nextButton = document.querySelector('.carousel-button.next');
+            const images = document.querySelectorAll('.image-carousel img');
+
+            if (carousel && prevButton && nextButton && images.length > 0) {
+                let scrollAmount = images[0].clientWidth * 0.9; 
+
+                nextButton.addEventListener('click', () => {
+                    carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                });
+
+                prevButton.addEventListener('click', () => {
+                    carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                });
+
+                function updateScrollAmount() {
+                    if (window.innerWidth < 768) {
+                        scrollAmount = carousel.clientWidth * 0.95;
+                    } else {
+                        scrollAmount = carousel.clientWidth * 0.8;
+                    }
+                }
+
+                window.addEventListener('resize', updateScrollAmount);
+                updateScrollAmount();
+            }
+        });
+    </script>
 
 </body>
 </html>
