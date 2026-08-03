@@ -258,71 +258,355 @@ main {
         font-weight: 500;
     }
 
-/* ===== Gallery Page ===== */
+/* ===== 3D Cover Flow Gallery ===== */
+.gallery-section {
+    position: relative;
+    padding: 1rem 0 2rem;
+    overflow: hidden;
+}
+
 .gallery-container {
     position: relative;
     width: 100%;
+    max-width: 1050px;
     margin: 0 auto;
-    display: flex;
-    align-items: center;
-}
-
-.image-carousel {
-    display: flex;
-    overflow-x: scroll;
-    scroll-behavior: smooth;
-    -ms-overflow-style: none;
-    /* IE and Edge */
-    scrollbar-width: none;
-    /* Firefox */
-    gap: 1.5rem;
     padding: 1rem 0;
+    perspective: 1200px;
 }
 
-    .image-carousel::-webkit-scrollbar {
-        display: none;
-        /* Chrome, Safari, and Opera */
-    }
+.swiper {
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    overflow: visible;
+}
 
-    .image-carousel img {
-        max-width: 80%;
-        height: auto;
-        border-radius: var(--radius);
-        box-shadow: var(--shadow);
-        flex: 0 0 auto;
-        object-fit: cover;
-        max-height: 70vh;
-    }
-
-.carousel-button {
-    background-color: rgba(26, 58, 92, 0.8);
-    color: var(--white);
-    border: none;
-    border-radius: 50%;
-    width: 45px;
-    height: 45px;
-    font-size: 1.5rem;
+.swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 300px;
+    height: 390px;
+    border-radius: 16px;
+    position: relative;
+    transition: transform 0.4s ease, opacity 0.4s ease, box-shadow 0.4s ease;
+    opacity: 0.45;
     cursor: pointer;
+    user-select: none;
+    will-change: transform, opacity;
+}
+
+@media (max-width: 480px) {
+    .swiper-slide {
+        width: 270px;
+        height: 360px;
+    }
+}
+
+@media (min-width: 768px) {
+    .swiper-slide {
+        width: 440px;
+        height: 500px;
+    }
+}
+
+/* Slide card & image */
+.slide-card {
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    background-color: var(--navy-dark);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.slide-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+/* Active slide styling: centered, largest, fully opaque, accent glow */
+.swiper-slide-active {
+    opacity: 1 !important;
+    z-index: 10;
+}
+
+.swiper-slide-active .slide-card {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35), 0 0 0 3px var(--accent);
+}
+
+.swiper-slide-active:hover .slide-card img {
+    transform: scale(1.05);
+}
+
+/* Adjacent preview slides: scaled down, semi-transparent (40-50% opacity) */
+.swiper-slide-prev,
+.swiper-slide-next {
+    opacity: 0.45 !important;
+    filter: brightness(0.9);
+}
+
+/* Non-active slide overlay hint on hover */
+.swiper-slide:not(.swiper-slide-active):hover {
+    opacity: 0.75 !important;
+}
+
+/* Dynamic slide caption overlay */
+.slide-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2.5rem 1.25rem 1.25rem;
+    background: linear-gradient(to top, rgba(14, 34, 56, 0.95) 0%, rgba(14, 34, 56, 0.6) 60%, transparent 100%);
+    color: var(--white);
+    transform: translateY(10px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.swiper-slide-active .slide-caption {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.slide-tag {
+    display: inline-block;
+    background-color: var(--accent);
+    color: var(--white);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    margin-bottom: 0.4rem;
+}
+
+.slide-caption h3 {
+    color: var(--white);
+    font-size: 1.25rem;
+    margin-bottom: 0.2rem;
+}
+
+.slide-caption p {
+    color: var(--sand);
+    font-size: 0.9rem;
+    margin-bottom: 0;
+    opacity: 0.9;
+}
+
+.click-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.75rem;
+    color: var(--water-light);
+    margin-top: 0.4rem;
+    font-weight: 500;
+}
+
+/* Custom Navigation Buttons */
+.carousel-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 10;
-    transition: background-color 0.2s;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(26, 58, 92, 0.88);
+    color: var(--white);
+    border: 2px solid rgba(255, 255, 255, 0.25);
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+    z-index: 30;
+    transition: all 0.25s ease;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-    .carousel-button:hover {
-        background-color: var(--accent);
+.carousel-btn:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 18px rgba(212, 132, 42, 0.4);
+}
+
+.carousel-btn.prev-btn {
+    left: 10px;
+}
+
+.carousel-btn.next-btn {
+    right: 10px;
+}
+
+@media (max-width: 480px) {
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
     }
-
-.carousel-button.prev {
-    left: -20px;
+    .carousel-btn.prev-btn {
+        left: 4px;
+    }
+    .carousel-btn.next-btn {
+        right: 4px;
+    }
 }
 
-.carousel-button.next {
-    right: -20px;
+@media (min-width: 1024px) {
+    .carousel-btn.prev-btn {
+        left: -15px;
+    }
+    .carousel-btn.next-btn {
+        right: -15px;
+    }
+}
+
+/* Toolbar: Pagination dots & Autoplay Control */
+.carousel-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.swiper-pagination {
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    width: auto !important;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background: var(--navy);
+    opacity: 0.3;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+    margin: 0 !important;
+    cursor: pointer;
+}
+
+.swiper-pagination-bullet-active {
+    opacity: 1;
+    width: 32px;
+    background: var(--accent);
+    box-shadow: 0 2px 8px rgba(212, 132, 42, 0.5);
+}
+
+/* Autoplay toggle button */
+.autoplay-toggle {
+    background: var(--navy);
+    color: var(--white);
+    border: none;
+    padding: 0.45rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.autoplay-toggle:hover {
+    background: var(--water);
+    transform: translateY(-1px);
+}
+
+/* Lightbox Modal */
+.lightbox-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(14, 34, 56, 0.94);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox-modal.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lightbox-content {
+    max-width: 90vw;
+    max-height: 85vh;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    background: var(--navy-dark);
+}
+
+.lightbox-content img {
+    max-width: 100%;
+    max-height: 75vh;
+    display: block;
+    object-fit: contain;
+    margin: 0 auto;
+}
+
+.lightbox-caption {
+    background: var(--navy-dark);
+    color: var(--white);
+    padding: 1rem 1.5rem;
+    text-align: center;
+}
+
+.lightbox-caption h3 {
+    color: var(--sand);
+    margin-bottom: 0.2rem;
+}
+
+.lightbox-caption p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--white);
+    border: none;
+    font-size: 1.8rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1010;
+    transition: background 0.2s ease;
+}
+
+.lightbox-close:hover {
+    background: var(--accent);
 }
 
 /* ===== Contact Page ===== */

@@ -12,8 +12,11 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Photo gallery of The Bait Shack — see our shop, bait selection, tackle, and the fishing community we serve in Leominster, MA.">
+    <meta name="description" content="3D Photo Gallery of The Bait Shack — explore our shop, live bait selection, fishing tackle, and gear in Leominster, MA.">
     <title>Gallery | The Bait Shack — Leominster, MA</title>
+    
+    <!-- Swiper CSS (Self-Hosted) -->
+    <link rel="stylesheet" href="css/swiper-bundle.min.css" />
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -36,56 +39,260 @@
 
     <main>
 
-        <h1>Gallery</h1>
-        <p style="margin-bottom: 2rem;">Take a look around The Bait Shack and see what we offer.</p>
-
-        <div class="gallery-container">
-            <button class="carousel-button prev" aria-label="Previous image">&#10094;</button>
-            <div class="image-carousel">
-                <img src="images/baitshack1.webp" alt="The Bait Shack storefront">
-                <img src="images/baitshack2.webp" alt="Inside The Bait Shack">
-                <img src="images/baitshack3.webp" alt="Fishing tackle and gear">
-                <img src="images/baitshack4.webp" alt="Live bait selection">
+        <section class="gallery-section">
+            <div style="text-align: center; max-width: 700px; margin: 0 auto 1.5rem;">
+                <h1>Interactive Photo Gallery</h1>
+                <p>Take a 3D tour through The Bait Shack - browse our shop interior, live bait selection, tackle gear, and local fishing environment. Click any active photo to enlarge.</p>
             </div>
-            <button class="carousel-button next" aria-label="Next image">&#10095;</button>
-        </div>
+
+            <div class="gallery-container">
+                <!-- Navigation Arrows -->
+                <button class="carousel-btn prev-btn" aria-label="Previous Slide">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <button class="carousel-btn next-btn" aria-label="Next Slide">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+
+                <!-- Swiper Carousel -->
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        
+                        <!-- Slide 1 -->
+                        <div class="swiper-slide" data-title="Storefront View" data-desc="The Bait Shack location at 832 Wachusett St, Leominster, MA — open 24/7.">
+                            <div class="slide-card">
+                                <img src="images/baitshack1.webp" alt="The Bait Shack storefront" loading="eager">
+                                <div class="slide-caption">
+                                    <span class="slide-tag">Location</span>
+                                    <h3>The Bait Shack Storefront</h3>
+                                    <p>832 Wachusett St, Leominster, MA — Open 24/7</p>
+                                    <span class="click-hint">🔍 Click to enlarge</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2 -->
+                        <div class="swiper-slide" data-title="Shop Interior" data-desc="Clean, organized, self-service interior stocked with all fishing essentials.">
+                            <div class="slide-card">
+                                <img src="images/baitshack2.webp" alt="Inside The Bait Shack" loading="eager">
+                                <div class="slide-caption">
+                                    <span class="slide-tag">Interior</span>
+                                    <h3>Shop Atmosphere</h3>
+                                    <p>Friendly self-service setup with instant checkout</p>
+                                    <span class="click-hint">🔍 Click to enlarge</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3 -->
+                        <div class="swiper-slide" data-title="Tackle & Gear" data-desc="High quality hooks, lines, bobbers, and specialized lures for local species.">
+                            <div class="slide-card">
+                                <img src="images/baitshack3.webp" alt="Fishing tackle and gear" loading="eager">
+                                <div class="slide-caption">
+                                    <span class="slide-tag">Equipment</span>
+                                    <h3>Tackle & Gear Selection</h3>
+                                    <p>Hooks, lines, lures, and terminal tackle</p>
+                                    <span class="click-hint">🔍 Click to enlarge</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 4 -->
+                        <div class="swiper-slide" data-title="Live Bait Tanks" data-desc="Fresh aerated live bait available around the clock, including shiners and worms.">
+                            <div class="slide-card">
+                                <img src="images/baitshack4.webp" alt="Live bait selection" loading="eager">
+                                <div class="slide-caption">
+                                    <span class="slide-tag">Live Bait</span>
+                                    <h3>Fresh Live Bait</h3>
+                                    <p>Healthy shiners, nightcrawlers & mealworms 24/7</p>
+                                    <span class="click-hint">🔍 Click to enlarge</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 5 -->
+                        <div class="swiper-slide" data-title="Pro Rods & Accessories" data-desc="Fully stocked shelves featuring top fishing brands and custom accessories.">
+                            <div class="slide-card">
+                                <img src="images/baitshack5.webp" alt="Pro fishing rods and lures" loading="lazy">
+                                <div class="slide-caption">
+                                    <span class="slide-tag">Pro Gear</span>
+                                    <h3>Rods & Lure Display</h3>
+                                    <p>Everything you need for bass, trout, and pike</p>
+                                    <span class="click-hint">🔍 Click to enlarge</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 6 -->
+                        <div class="swiper-slide" data-title="Local Waterways" data-desc="Serving anglers visiting Wachusett Reservoir, Lake Whalom, and regional ponds.">
+                            <div class="slide-card">
+                                <img src="images/baitshack6.webp" alt="Peaceful lake fishing at dawn" loading="lazy">
+                                <div class="slide-caption">
+                                    <span class="slide-tag">Community</span>
+                                    <h3>Local Fishing Haven</h3>
+                                    <p>Get ready for early morning fishing on local waters</p>
+                                    <span class="click-hint">🔍 Click to enlarge</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Toolbar: Pagination Dots + Autoplay Toggle -->
+                <div class="carousel-toolbar">
+                    <div class="swiper-pagination"></div>
+                    <button class="autoplay-toggle" id="autoplayToggle" aria-label="Toggle Autoplay">
+                        <span id="autoplayIcon">⏸️</span>
+                        <span id="autoplayText">Pause Autoplay</span>
+                    </button>
+                </div>
+            </div>
+        </section>
 
     </main>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true" aria-label="Image Preview">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close Lightbox">&times;</button>
+        <div class="lightbox-content">
+            <img src="" id="lightboxImg" alt="Enlarged photo preview">
+            <div class="lightbox-caption">
+                <h3 id="lightboxTitle"></h3>
+                <p id="lightboxDesc"></p>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <p>&copy; 2026 The Bait Shack — 832 Wachusett St, Leominster, MA 01453</p>
         <p>Open 24 hours a day, 7 days a week | Cash Only</p>
     </footer>
 
+    <!-- Swiper JS (Self-Hosted) -->
+    <script src="js/swiper-bundle.min.js"></script>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const carousel = document.querySelector('.image-carousel');
-            const prevButton = document.querySelector('.carousel-button.prev');
-            const nextButton = document.querySelector('.carousel-button.next');
-            const images = document.querySelectorAll('.image-carousel img');
-
-            if (carousel && prevButton && nextButton && images.length > 0) {
-                let scrollAmount = images[0].clientWidth * 0.9; 
-
-                nextButton.addEventListener('click', () => {
-                    carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-                });
-
-                prevButton.addEventListener('click', () => {
-                    carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-                });
-
-                function updateScrollAmount() {
-                    if (window.innerWidth < 768) {
-                        scrollAmount = carousel.clientWidth * 0.95;
-                    } else {
-                        scrollAmount = carousel.clientWidth * 0.8;
+            // Initialize 3D Coverflow Swiper
+            const swiper = new Swiper('.mySwiper', {
+                effect: 'coverflow',
+                grabCursor: true,
+                centeredSlides: true,
+                slidesPerView: 'auto',
+                loop: true,
+                speed: 600,
+                slideToClickedSlide: true,
+                coverflowEffect: {
+                    rotate: 20,
+                    stretch: 0,
+                    depth: 160,
+                    modifier: 1,
+                    slideShadows: true,
+                    scale: 0.82,
+                },
+                autoplay: {
+                    delay: 3500,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.next-btn',
+                    prevEl: '.prev-btn',
+                },
+                keyboard: {
+                    enabled: true,
+                },
+                breakpoints: {
+                    320: {
+                        coverflowEffect: {
+                            rotate: 15,
+                            depth: 100,
+                            scale: 0.85
+                        }
+                    },
+                    768: {
+                        coverflowEffect: {
+                            rotate: 20,
+                            depth: 160,
+                            scale: 0.82
+                        }
                     }
                 }
+            });
 
-                window.addEventListener('resize', updateScrollAmount);
-                updateScrollAmount();
+            // Autoplay Toggle Control
+            const autoplayToggle = document.getElementById('autoplayToggle');
+            const autoplayIcon = document.getElementById('autoplayIcon');
+            const autoplayText = document.getElementById('autoplayText');
+            let isAutoplayRunning = true;
+
+            autoplayToggle.addEventListener('click', () => {
+                if (isAutoplayRunning) {
+                    swiper.autoplay.stop();
+                    autoplayIcon.textContent = '▶️';
+                    autoplayText.textContent = 'Play Autoplay';
+                    isAutoplayRunning = false;
+                } else {
+                    swiper.autoplay.start();
+                    autoplayIcon.textContent = '⏸️';
+                    autoplayText.textContent = 'Pause Autoplay';
+                    isAutoplayRunning = true;
+                }
+            });
+
+            // Lightbox Modal Functionality
+            const lightboxModal = document.getElementById('lightboxModal');
+            const lightboxImg = document.getElementById('lightboxImg');
+            const lightboxTitle = document.getElementById('lightboxTitle');
+            const lightboxDesc = document.getElementById('lightboxDesc');
+            const lightboxClose = document.getElementById('lightboxClose');
+
+            // Handle slide click to open lightbox if active slide
+            document.querySelectorAll('.swiper-slide').forEach(slide => {
+                slide.addEventListener('click', (e) => {
+                    // Check if clicked slide is the active centered slide
+                    if (slide.classList.contains('swiper-slide-active')) {
+                        const img = slide.querySelector('img');
+                        const title = slide.getAttribute('data-title') || img.alt;
+                        const desc = slide.getAttribute('data-desc') || '';
+
+                        lightboxImg.src = img.src;
+                        lightboxImg.alt = img.alt;
+                        lightboxTitle.textContent = title;
+                        lightboxDesc.textContent = desc;
+
+                        lightboxModal.classList.add('active');
+                        swiper.autoplay.stop();
+                    }
+                });
+            });
+
+            // Close lightbox on button click, background click, or Escape key
+            function closeLightbox() {
+                lightboxModal.classList.remove('active');
+                if (isAutoplayRunning) {
+                    swiper.autoplay.start();
+                }
             }
+
+            lightboxClose.addEventListener('click', closeLightbox);
+
+            lightboxModal.addEventListener('click', (e) => {
+                if (e.target === lightboxModal) {
+                    closeLightbox();
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && lightboxModal.classList.contains('active')) {
+                    closeLightbox();
+                }
+            });
         });
     </script>
 
